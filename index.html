@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montag – Home</title>
+  <meta name="description" content="Montag" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-paper text-brand font-sans antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-black/10">
+    <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+      <a href="index.html" class="text-xl font-bold tracking-tight">Montag</a>
+      <ul class="flex gap-6 text-sm font-medium">
+        <li><a href="index.html" class="underline underline-offset-4">Home</a></li>
+        <li><a href="shop.html" class="hover:underline underline-offset-4">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero: Bild aus Figma als images/hero.jpg ablegen -->
+    <section class="relative h-[80vh] min-h-[480px] overflow-hidden">
+      <img src="images/hero.jpg" alt="" class="img-slot absolute inset-0" />
+      <div class="absolute inset-0 bg-black/30"></div>
+      <div class="relative z-10 mx-auto max-w-6xl h-full flex flex-col justify-end px-6 pb-16 text-white">
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight max-w-3xl">Willkommen bei Montag</h1>
+        <p class="mt-4 text-lg max-w-xl text-white/90">Kurzer Einleitungstext – hier kommt dein Text aus Figma hin.</p>
+        <a href="shop.html" class="mt-8 inline-block w-fit rounded-full bg-white text-brand px-6 py-3 font-semibold hover:bg-accent hover:text-white transition">
+          Zum Shop
+        </a>
+      </div>
+    </section>
+
+    <!-- Text + Bild -->
+    <section class="mx-auto max-w-6xl px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Über uns</h2>
+        <p class="mt-6 text-neutral-700 leading-relaxed">
+          Platzhaltertext. Ersetze diesen Abschnitt mit deinem Inhalt aus Figma.
+          Erzähl, wer ihr seid und was ihr macht.
+        </p>
+      </div>
+      <div class="aspect-[4/5] rounded-2xl overflow-hidden">
+        <img src="images/about.jpg" alt="" class="img-slot" />
+      </div>
+    </section>
+
+    <!-- Bildergalerie -->
+    <section class="mx-auto max-w-6xl px-6 pb-24">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-1.jpg" alt="" class="img-slot" /></div>
+        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-2.jpg" alt="" class="img-slot" /></div>
+        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-3.jpg" alt="" class="img-slot" /></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/10">
+    <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row justify-between gap-4 text-sm text-neutral-600">
+      <p>© 2026 Montag</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-brand">Impressum</a>
+        <a href="#" class="hover:text-brand">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

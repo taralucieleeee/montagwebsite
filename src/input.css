@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Tailwind scannt diese Dateien nach Klassen */
+@source "../*.html";
+
+/* Eigene Design-Tokens – hier Farben/Fonts aus Figma eintragen */
+@theme {
+  --color-brand: #111111;
+  --color-accent: #e85d3a;
+  --color-paper: #f7f5f2;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Platzhalter-Look, solange noch kein Bild da ist */
+@layer components {
+  .img-slot {
+    @apply w-full h-full object-cover bg-neutral-200;
+  }
+}
