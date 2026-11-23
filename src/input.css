@@ -2,18 +2,284 @@
 
 /* Tailwind scannt diese Dateien nach Klassen */
 @source "../*.html";
+@source "../js/*.js";
 
-/* Eigene Design-Tokens – hier Farben/Fonts aus Figma eintragen */
-@theme {
-  --color-brand: #111111;
-  --color-accent: #e85d3a;
-  --color-paper: #f7f5f2;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+/* Schriften
+   - Grotesk: Arial Narrow (wie in Figma, Laufweite −8 %). Ist auf jedem Mac und auf Windows mit Office
+     installiert und wird von dort genommen. Arial Narrow darf man nicht selbst ins Web hochladen (Lizenz Monotype),
+     darum fällt der Browser ohne installierte Arial Narrow auf Archivo zurück – lokal eingebunden, ähnlich schmal.
+   - Serif: Serrif VF (Displaay Type Foundry) – kommerzielle Schrift. Solange keine Web-Lizenz/Webfont-Dateien da sind,
+     wird sie nur auf Rechnern angezeigt, auf denen sie installiert ist (auch die Trial-Version); sonst Times New Roman. */
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo-latin-ext-wdth-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Platzhalter-Look, solange noch kein Bild da ist */
-@layer components {
-  .img-slot {
-    @apply w-full h-full object-cover bg-neutral-200;
+/* Design-Tokens aus dem Figma-Entwurf (gemessen an 2000 px Breite) */
+@theme {
+  /* breite Bildschirme (ab 1700 px): 4 Bilder pro Reihe auf der Startseite */
+  --breakpoint-wide: 106.25rem;
+  --color-brand: #000000;
+  --color-blush: #fdd5e0;   /* rosa Menü-Band */
+  --color-muted: #9a9a9a;   /* impressum */
+
+  --font-sans: "Arial Narrow", "Archivo", sans-serif;
+  --font-serif: "Serrif VF", "Serrif VF-TRIAL", "Times New Roman", Times, ui-serif, serif;
+
+  /* Schriftgrößen: wachsen mit der Fensterbreite, mit Unter- und Obergrenze */
+  --text-display: clamp(1.6rem, 2.9vw, 4.5rem);   /* Kopfzeile, Menü, Hover-Kasten */
+  --text-display--line-height: 0.95;
+  --text-panel: clamp(1.25rem, 2.7vw, 4rem);      /* about-Text */
+  --text-panel--line-height: 1.12;
+  --text-names: clamp(1.1rem, 2vw, 3rem);         /* Namen bei about */
+  --text-names--line-height: 1.25;
+  --text-list: clamp(1rem, 1.85vw, 2.75rem);      /* artists, contact */
+  --text-list--line-height: 1.85;
+  --text-info: clamp(0.95rem, 1vw, 1.5rem);       /* Infospalte Projektseite */
+  --text-input: clamp(1.1rem, 2.2vw, 3rem);       /* Wunschfeld + Sticker im Shop */
+  --text-info--line-height: 1.33;
+}
+
+@layer base {
+  /* Laufweite wie in Figma: −8 % für Grotesk und Serif.
+     (font-stretch 68 % betrifft nur die Ersatzschrift Archivo, Arial Narrow ist von sich aus schmal.) */
+  body {
+    font-stretch: 68%;
+    --tracking: -0.08em;
   }
+  .font-serif {
+    font-stretch: normal;
+    --tracking: -0.08em;
+  }
+  /* em-Werte gelten pro Element, damit große und kleine Schrift gleich eng laufen */
+  :where(body, body *) {
+    letter-spacing: var(--tracking);
+  }
+}
+
+/* Flügelschlag der Schmetterlinge */
+@keyframes flap-l { from { transform: rotateY(0deg); } to { transform: rotateY(72deg); } }
+@keyframes flap-r { from { transform: rotateY(0deg); } to { transform: rotateY(-72deg); } }
+
+@layer components {
+  /* Wörter, die fett werden (Hover/aktiv), reservieren vorab die Breite der fetten Version –
+     so springt nichts. Braucht data-text="gleicher Text" am Element. */
+  .bold-stable, .menu-toggle, .edition-tab {
+    display: inline-grid;
+  }
+  .bold-stable::after, .menu-toggle::after, .edition-tab::after {
+    content: attr(data-text);
+    font-weight: 700;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Kasten mit Projektnamen – folgt der Maus (Position setzt js/hover-label.js) */
+  .hover-label {
+    @apply pointer-events-none fixed left-0 top-0 z-30 hidden whitespace-nowrap
+      border border-brand bg-white px-[0.6vw] py-[0.45vw] text-display;
+  }
+  /* Handy/Touch: kein Kasten, der Finger "hovert" nicht */
+  @media (hover: none) { .hover-label { display: none !important; } }
+
+  /* Menü: geschlossen nur das Wort rechts, geöffnet ein rosa Band über die volle Breite */
+  .menu-item {
+    @apply flex flex-row-reverse items-start;
+  }
+  .menu-item.is-open {
+    @apply pointer-events-auto bg-blush py-[0.5vw];
+  }
+  .menu-toggle {
+    @apply pointer-events-auto shrink-0 cursor-pointer px-[1.2vw] text-right hover:font-bold max-md:px-4;
+  }
+  .menu-item.is-open .menu-toggle {
+    @apply font-bold;
+  }
+  .menu-panel {
+    @apply min-w-0 flex-1 px-[1.2vw] pb-[0.5vw] max-md:px-4;
+  }
+
+  /* Handy: Menüpunkte als Zeile direkt unter der Kopfzeile, Band klappt darunter auf.
+     --header-h und --menu-h setzt js/menu.js */
+  @media (width < 48rem) {
+    #menu {
+      /* Position, Klickbarkeit und Schriftgröße stehen als max-md:-Klassen direkt am #menu in index.html */
+      @apply flex flex-wrap items-baseline gap-x-5 border-b border-brand bg-white px-4 py-2;
+    }
+    #menu .menu-item { display: contents; }
+    #menu .menu-toggle { @apply px-0 text-left; }
+    #menu .menu-panel {
+      order: 1;
+      flex-basis: calc(100% + 2rem);
+      max-height: calc(100dvh - var(--menu-top, 0px) - var(--menu-h, 0px));
+      @apply -mx-4 -mb-2 mt-2 overflow-y-auto bg-blush py-4;
+    }
+    #content { padding-top: var(--menu-h, 0px); }
+    /* Projektbilder genau so breit wie der Bildschirm – sonst drückt das Querformat-Bild die Seite breiter */
+    #content main .project { width: 100%; min-width: 0; min-height: 0; }
+    /* Zeichenfläche fast bildschirmbreit (!important schlägt die Inline-Werte) */
+    #draw-box { --w: 86vw !important; --y: 50% !important; }
+  }
+
+  /* Frei platziertes Element: Mittelpunkt --x/--y, Drehung --r, Breite --w (optional) */
+  .placed {
+    @apply absolute left-(--x) top-(--y) w-(--w,auto) max-w-none -translate-1/2 rotate-(--r,0deg);
+  }
+
+  /* Wechselnder Satz in der Kopfzeile (js/rotator.js):
+     alle Sätze liegen im selben Rasterfeld übereinander → Box ist so lang wie der längste Satz */
+  .rotator { @apply inline-grid; }
+  .rotator > span { grid-area: 1 / 1; @apply md:whitespace-nowrap; }
+
+  /* Nachtfalter im Shop (js/butterflies.js) – Bild in images/butterfly/ */
+  .butterfly {
+    @apply pointer-events-none absolute left-0 top-0 z-20 flex will-change-transform;
+    width: clamp(9rem, 15vw, 20rem);
+    aspect-ratio: 360 / 203;
+    perspective: 300px;
+    filter: drop-shadow(0.2vw 0.4vw 0.3vw rgba(0, 0, 0, 0.14));
+  }
+  .butterfly img { @apply block h-full select-none; }
+  .butterfly .wing { width: 50%; }
+  .butterfly .wing-l { transform-origin: right center; animation: flap-l var(--flap, 0.2s) ease-in-out infinite alternate; }
+  .butterfly .wing-r { transform-origin: left center; animation: flap-r var(--flap, 0.2s) ease-in-out infinite alternate; }
+  .butterfly .body { @apply absolute left-1/2 top-0 -translate-x-1/2; width: 12%; }
+
+  /* Abgeschickte Zeichnung als großer Hintergrund (js/draw.js):
+     über den gefallenen Bildern, unter Überschrift, Zeichenfläche und Texten (die haben z-10) */
+  .drawing-background {
+    @apply pointer-events-none absolute z-[5] max-w-none select-none;
+    transform-origin: center;
+  }
+
+  /* Fallende Bilder am Ende der Homepage (Position setzt js/falling.js) */
+  .falling-item {
+    @apply absolute left-0 top-0 block origin-center will-change-transform;
+  }
+  .falling-item.is-drawing { @apply border border-brand bg-white; }
+  .falling-item img {
+    @apply pointer-events-none h-full w-full object-cover select-none;
+  }
+
+  /* Rosa Sticker im Shop – Mittelpunkt bei --x/--y, gedreht um --r */
+  .sticker {
+    @apply absolute left-(--x) top-(--y) -translate-1/2 rotate-(--r) whitespace-nowrap select-none
+      bg-blush px-[0.45em] py-[0.05em] font-serif text-input leading-[1.1]
+      shadow-[0.25vw_0.35vw_0.3vw_rgba(0,0,0,0.12)];
+  }
+  .sticker::before { content: "• "; }
+  .sticker.is-draggable { @apply cursor-grab touch-none; }
+  .sticker.is-dragging { @apply z-10 cursor-grabbing shadow-[0.5vw_0.8vw_0.8vw_rgba(0,0,0,0.18)]; }
+  [hidden] { display: none !important; }
+
+  /* ── Projektseite ── */
+  /* Feste Seitenspalten: bleiben unter der Kopfzeile stehen, während die Bilder scrollen.
+     --header-h setzt js/project-layout.js */
+  .pinned {
+    @apply md:sticky md:overflow-y-auto;
+    top: var(--header-h, 4.6vw);
+    height: calc(100dvh - var(--header-h, 4.6vw));
+    scrollbar-width: none;
+  }
+  @media (width < 48rem) { .pinned { height: auto; } }
+  /* Handy: rosa Titelstreifen und back-Zeile bleiben oben unter der Kopfzeile stehen
+     (--title-h setzt js/project-layout.js) */
+  @media (width < 48rem) {
+    .mobile-title { position: sticky; top: var(--header-h, 0px); z-index: 20; }
+    .mobile-back {
+      position: sticky; z-index: 20; background: var(--color-white, #fff);
+      top: calc(var(--header-h, 0px) + var(--title-h, 0px));
+    }
+  }
+  /* Senkrechter Titel im rosa Streifen, liest von unten nach oben */
+  .project-title {
+    @apply rotate-180 whitespace-nowrap text-[11.25vw] leading-[0.82] tracking-[-0.06em] [writing-mode:vertical-rl]
+      max-md:rotate-0 max-md:text-[16vw] max-md:[writing-mode:horizontal-tb];
+  }
+  .edition-tab {
+    @apply cursor-pointer px-[0.7vw] py-[0.55vw] text-left hover:font-bold max-md:px-2 max-md:py-1;
+  }
+  .edition-tab.is-active { @apply bg-blush; }
+
+  .info-block { @apply mb-[1.4vw] border-t border-neutral-400 pt-[0.55vw] max-md:mb-6 max-md:pt-2; }
+  .info-heading { @apply mb-[1vw] font-bold; }
+
+  /* Liste: Name links, Nummer rechts */
+  .numbered-list { counter-reset: num; }
+  .numbered-list li { @apply flex justify-between; counter-increment: num; }
+  .numbered-list li::after { content: counter(num) "."; }
+
+  /* Schwarze Etiketten, treppenartig nach rechts versetzt */
+  .fact {
+    /* Stufe = ein Drittel der Spaltenbreite; bricht um, statt aus der Spalte zu ragen */
+    @apply w-fit bg-brand px-[0.6vw] text-[1.25em] leading-[1.15] text-white;
+    margin-left: calc(var(--i) * 33%);
+    max-width: calc(100% - var(--i) * 33%);
+  }
+  /* letzte Stufe schließt rechts bündig ab */
+  .fact:last-child:not(:first-child) { @apply ml-auto; max-width: 100%; }
+
+  /* Kästchen-Tabelle (kursiv, Rahmen teilen sich die Linien) */
+  .tag-table { @apply flex flex-col text-[1.2em] italic; }
+  .tag-table > div { @apply -mt-px flex flex-wrap; }
+  .tag-table span { @apply -ml-px whitespace-nowrap border border-brand px-[0.6vw] leading-[1.05] first:ml-0; }
+
+  /* collab-Karten im Menü: Hover dreht die Karte um (Rückseite mit Text) */
+  .collab-card {
+    @apply block shrink-0 cursor-pointer;
+    width: clamp(6.5rem, 12.9vw, 18rem);
+    aspect-ratio: 258 / 390;
+    perspective: 1000px;
+  }
+  .collab-card-inner {
+    @apply relative block h-full w-full;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .collab-card:hover .collab-card-inner,
+  .collab-card:focus-visible .collab-card-inner { transform: rotateY(180deg); }
+  .collab-front, .collab-back {
+    @apply absolute inset-0 flex flex-col overflow-hidden bg-white;
+    backface-visibility: hidden;
+  }
+  .collab-front img { @apply h-full w-full object-cover; }
+  .collab-label {
+    @apply absolute bottom-0 left-0 bg-white px-[0.5em] font-sans text-names;
+  }
+  .collab-back {
+    @apply justify-between bg-brand p-[0.9vw] font-serif text-white max-md:p-2;
+    transform: rotateY(180deg);
+    font-size: clamp(0.8rem, 1.15vw, 1.6rem);
+    line-height: 1.2;
+  }
+  .collab-back strong { @apply font-sans text-names font-bold; }
+  .collab-back em { @apply not-italic underline underline-offset-4; }
+
+  /* Rechtstexte (Impressum): ruhige Lesegröße, Links unterstrichen */
+  .legal { font-size: clamp(1rem, 1.35vw, 1.8rem); line-height: 1.35; }
+  .legal p + p { @apply mt-[0.8em]; }
+  .legal a { @apply underline underline-offset-4 hover:no-underline; }
+  .legal .info-block { @apply mb-[2vw]; }
+  /* noch auszufüllende Stellen */
+  .fill { @apply bg-blush px-[0.2em] text-brand; }
+
+  /* Nummerierung der Künstler*innen-Liste: "1. Name 2. Name …" */
+  .artist-list { counter-reset: artist; }
+  .artist-list li { counter-increment: artist; }
+  .artist-list li::before { content: counter(artist) ". "; letter-spacing: 0; }
 }

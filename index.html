@@ -1,73 +1,322 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Montag – Home</title>
-  <meta name="description" content="Montag" />
+  <title>Montag Kollektiv</title>
+  <meta name="description" content="Montag Kollektiv is a creative collective from Hamburg." />
+  <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-paper text-brand font-sans antialiased">
+<body class="min-h-dvh bg-white text-brand font-sans antialiased">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-black/10">
-    <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-      <a href="index.html" class="text-xl font-bold tracking-tight">Montag</a>
-      <ul class="flex gap-6 text-sm font-medium">
-        <li><a href="index.html" class="underline underline-offset-4">Home</a></li>
-        <li><a href="shop.html" class="hover:underline underline-offset-4">Shop</a></li>
-      </ul>
+  <!-- ───────── Kopfzeile ───────── -->
+  <header class="sticky top-0 z-30 grid grid-cols-1 md:grid-cols-[auto_1fr] border border-brand max-md:border-x-0 max-md:border-t-0 bg-white text-display">
+    <h1 class="px-[1.2vw] py-[1.1vw] max-md:px-4 max-md:py-3 md:border-r border-brand">
+      <a href="index.html"><strong class="font-bold">Montag Kollektiv</strong> <span class="rotator" data-rotate="is a creative collective from Hamburg|creates spaces for community|connects emerging artists|organizes events &amp; exhibitions|is open for collaborations">is a creative collective from Hamburg</span></a>
+    </h1>
+    <nav class="px-[1.2vw] py-[1.1vw] max-md:hidden border-brand text-right">
+      <a href="shop.html" class="bold-stable hover:font-bold" data-text="shop">shop</a>
     </nav>
   </header>
 
-  <main>
-    <!-- Hero: Bild aus Figma als images/hero.jpg ablegen -->
-    <section class="relative h-[80vh] min-h-[480px] overflow-hidden">
-      <img src="images/hero.jpg" alt="" class="img-slot absolute inset-0" />
-      <div class="absolute inset-0 bg-black/30"></div>
-      <div class="relative z-10 mx-auto max-w-6xl h-full flex flex-col justify-end px-6 pb-16 text-white">
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight max-w-3xl">Willkommen bei Montag</h1>
-        <p class="mt-4 text-lg max-w-xl text-white/90">Kurzer Einleitungstext – hier kommt dein Text aus Figma hin.</p>
-        <a href="shop.html" class="mt-8 inline-block w-fit rounded-full bg-white text-brand px-6 py-3 font-semibold hover:bg-accent hover:text-white transition">
-          Zum Shop
-        </a>
-      </div>
-    </section>
+  <!--
+    ───────── Projekte ─────────
+    Jedes Projekt ist ein <a class="project …" data-title="…">. data-title = Name im Kasten, der beim Hovern der Maus folgt.
+    Größe/Form steuerst du über die Klassen am <a>: md:w-[…vw] = Breite (die Höhe ergibt sich aus dem Bild).
+    <div class="basis-full"></div> erzwingt eine neue Zeile.
+    Bilder in images/home/ ablegen: 1.jpg … 5.jpg (Reihenfolge links oben → rechts unten). Siehe images/LIESMICH.md
+  -->
+  <div id="content" class="transition-[filter] duration-300">
+  <main class="flex flex-wrap items-end overflow-x-clip gap-x-[2.1vw] gap-y-[4.45vw] px-[2.8vw] pt-[7.2vw] pb-[8vw] max-md:flex-col max-md:items-stretch max-md:gap-8 max-md:px-4 max-md:pt-10">
+    <!-- Wie das Folch-Archiv: 3 pro Reihe (ab 1700 px Bildschirmbreite 4), unten bündig. Jeder Rahmen übernimmt die Form seines Bildes
+         (nichts wird abgeschnitten) – nur die Breite (md:w-[…vw]) ist festgelegt. -->
 
-    <!-- Text + Bild -->
-    <section class="mx-auto max-w-6xl px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Über uns</h2>
-        <p class="mt-6 text-neutral-700 leading-relaxed">
-          Platzhaltertext. Ersetze diesen Abschnitt mit deinem Inhalt aus Figma.
-          Erzähl, wer ihr seid und was ihr macht.
-        </p>
-      </div>
-      <div class="aspect-[4/5] rounded-2xl overflow-hidden">
-        <img src="images/about.jpg" alt="" class="img-slot" />
-      </div>
-    </section>
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[22.7vw] wide:w-[17.7vw]">
+      <img src="images/home/1.jpg" alt="Plakat Radar im Kugu Space" class="block w-full h-auto" loading="lazy" />
+    </a>
 
-    <!-- Bildergalerie -->
-    <section class="mx-auto max-w-6xl px-6 pb-24">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-1.jpg" alt="" class="img-slot" /></div>
-        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-2.jpg" alt="" class="img-slot" /></div>
-        <div class="aspect-square rounded-xl overflow-hidden"><img src="images/gallery-3.jpg" alt="" class="img-slot" /></div>
-      </div>
-    </section>
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[39.4vw] wide:w-[30.7vw]">
+      <img src="images/home/2.jpg" alt="Exhibition Radar" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[27.4vw] wide:w-[21.4vw]">
+      <img src="images/home/3.png" alt="Radar Sticker" class="block w-full h-auto will-change-transform" data-spin="0.25" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[27.3vw] wide:w-[17.7vw]">
+      <img src="images/home/4.jpg" alt="Plakat Pop-up Market" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[33.0vw] wide:w-[25.4vw]">
+      <img src="images/home/5.png" alt="Open Call Kreativmarkt" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[29.2vw] wide:w-[22.5vw]">
+      <img src="images/home/6.jpg" alt="Open Call Montag Market, 21. Dezember" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block overflow-hidden aspect-[1038/2132] md:w-[24.7vw] wide:w-[17.1vw]">
+      <!-- 7.png hat viel leeren Rand: der Rahmen zeigt nur die Puppe (Ausschnitt x 654–1692, y 146–2278 von 2338×2278) -->
+      <img src="images/home/7.png" alt="Transparente Schaufensterpuppe" class="absolute max-w-none w-[225.24%] left-[-63.01%] top-[-6.85%]" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[32.4vw] wide:w-[22.5vw]">
+      <img src="images/home/8.jpg" alt="Besucher*innen am Market-Stand" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[32.4vw] wide:w-[18.1vw]">
+      <!-- Video: läuft stumm in Schleife. Standbild 9-poster.jpg wird auch für die fallenden Bilder unten benutzt -->
+      <video src="images/home/9.mp4" poster="images/home/9-poster.jpg" aria-label="Video: Montag Market" class="block w-full h-auto" autoplay muted loop playsinline preload="metadata"></video>
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[33.1vw] wide:w-[25.6vw]">
+      <img src="images/home/10.jpg" alt="Künstler am Pult in violettem Licht" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[23.4vw] wide:w-[18.1vw]">
+      <img src="images/home/11.jpg" alt="Toothgem-Behandlung" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[33.1vw] wide:w-[25.6vw]">
+      <img src="images/home/12.jpg" alt="Sängerin mit Mikrofon" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[36.2vw] wide:w-[28.2vw]">
+      <img src="images/home/13.jpg" alt="Besucherin vor einer Fotowand" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[23.1vw] wide:w-[18.0vw]">
+      <img src="images/home/14.jpg" alt="Wandskulptur mit Tentakeln" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[30.2vw] wide:w-[23.5vw]">
+      <img src="images/home/15.png" alt="Plakat GEMZ, 20.12.24" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[24.2vw] wide:w-[17.8vw]">
+      <img src="images/home/16.png" alt="Person mit Silberstern vor dem Gesicht" class="block w-full h-auto will-change-transform" data-spin="0.15" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[27.1vw] wide:w-[16.7vw]">
+      <img src="images/home/17.jpg" alt="Ohrringe auf Moos" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[38.2vw] wide:w-[23.6vw]">
+      <img src="images/home/18.jpg" alt="Videoinstallation hinter einem Vorhang" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[29.8vw] wide:w-[23.6vw]">
+      <img src="images/home/19.jpg" alt="Publikum in der Ausstellung" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[29.8vw] wide:w-[23.6vw]">
+      <img src="images/home/20.jpg" alt="Gäste vor dem Kugu Space" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[29.8vw] wide:w-[29.2vw]">
+      <img src="images/home/21.jpg" alt="Gäste auf der Rampe" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[31.7vw] wide:w-[20.6vw]">
+      <img src="images/home/22.jpg" alt="Gehäkeltes Top" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[31.7vw] wide:w-[20.6vw]">
+      <img src="images/home/23.jpg" alt="DJ an einem Pult mit Neonlicht" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[26.1vw] wide:w-[17.0vw]">
+      <img src="images/home/24.jpg" alt="Bedrucktes Shirt und Leggings" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[26.5vw] wide:w-[20.4vw]">
+      <img src="images/home/25.jpg" alt="Montag Market, 21. Dezember" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="montag-market.html" data-title="Montag Market" class="project relative block md:w-[21.9vw] wide:w-[16.8vw]">
+      <video src="images/home/26.mp4" poster="images/home/26-poster.jpg" aria-label="Video: Montag Market Schriftzug" class="block w-full h-auto" autoplay muted loop playsinline preload="metadata"></video>
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[41.1vw] wide:w-[31.6vw]">
+      <img src="images/home/27.png" alt="Person hält ein Radar-Plakat vor das Gesicht" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[31.3vw] wide:w-[18.6vw]">
+      <img src="images/home/28.jpg" alt="Hände mit rosa Skulptur" class="block w-full h-auto" loading="lazy" />
+    </a>
+
+    <a href="exhibition-radar.html" data-title="Exhibition Radar" class="project relative block md:w-[28.3vw] wide:w-[21.9vw]">
+      <video src="images/home/29.mp4" poster="images/home/29-poster.jpg" aria-label="Video: Radar, 19.07.24 im Kugu Space" class="block w-full h-auto" autoplay muted loop playsinline preload="metadata"></video>
+    </a>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-black/10">
-    <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col md:flex-row justify-between gap-4 text-sm text-neutral-600">
-      <p>© 2026 Montag</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-brand">Impressum</a>
-        <a href="#" class="hover:text-brand">Datenschutz</a>
-      </div>
-    </div>
-  </footer>
+  <!--
+    ───────── Ende der Homepage: „leave something behind“ ─────────
+    Die Projektbilder von oben fallen hier mit Physik hinein (js/falling.js) und landen im Footer.
+    Man kann sie mit der Maus greifen und werfen; ein kurzer Klick öffnet das Projekt.
+  -->
+  <section id="leave" class="relative h-dvh overflow-hidden select-none max-md:h-[120svh]">
 
+    <div id="falling-layer" class="absolute inset-0" aria-label="Projects"></div>
+
+
+    <h2 class="placed z-10 text-center font-serif text-display leading-[1.06]" style="--x:50%; --y:21%; --r:0deg">
+      <span class="box-decoration-clone bg-brand px-[0.4em] py-[0.04em] text-white">leave something behind<br />for the next one</span>
+    </h2>
+
+    <!-- Zeichenfläche: mit der Maus / dem Finger malen, Pfeil „hinterlässt“ die Zeichnung -->
+    <div id="draw-box" class="placed z-10" style="--x:50%; --y:55%; --r:0deg; --w:34.2vw">
+      <canvas id="draw-canvas" class="block w-full aspect-[684/567] cursor-crosshair touch-none border border-brand bg-white"
+        aria-label="Drawing area"></canvas>
+      <!-- Pfeil sitzt unten rechts in der Zeichenfläche -->
+      <button id="draw-send" type="button" aria-label="Leave your drawing"
+        class="absolute right-0 bottom-0 grid aspect-square w-[max(3.4vw,3rem)] cursor-pointer place-items-center bg-brand text-white hover:bg-neutral-800 max-md:w-14">
+        <svg viewBox="0 0 24 24" class="w-1/2" fill="currentColor" aria-hidden="true"><path d="M2 3l20 9-20 9 4-9z" /></svg>
+      </button>
+    </div>
+
+    <p class="absolute bottom-[0.8vw] left-[1.2vw] z-10 text-names text-muted max-md:left-4 max-md:bottom-3">© <span class="max-md:hidden">copyright </span>2024<span class="max-md:hidden"> – all rights reserved</span></p>
+    <p class="absolute bottom-[0.8vw] left-1/2 z-10 -translate-x-1/2 text-center text-names text-muted max-md:bottom-10 max-md:left-4 max-md:translate-x-0 max-md:text-left">
+      <a href="mailto:hello@montagkollektiv.com" class="hover:text-brand">hello@montagkollektiv.com</a><br />
+      <span class="whitespace-pre">tara monheim  fabia poyke  käthe kraus</span>
+    </p>
+  </section>
+</div>
+
+  <!--
+    ───────── Menü ─────────
+    Klick auf einen Punkt öffnet ein rosa Band über die volle Breite, der Rest wird unscharf.
+    Erneuter Klick, Esc oder Klick daneben schließt es.
+  -->
+  <div id="menu" class="fixed inset-x-0 top-[42vh] z-40 text-display pointer-events-none max-md:pointer-events-auto max-md:text-[1.35rem]">
+
+    <section class="menu-item">
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="panel-about" data-text="about">about</button>
+      <div id="panel-about" class="menu-panel" hidden>
+        <div class="grid md:grid-cols-[1fr_auto] gap-x-[8vw] gap-y-6 font-serif">
+          <p class="text-panel max-w-[59vw] max-md:max-w-none">
+            The Montag Collective has made it its mission to connect young, emerging artists and offer them a safe platform where they can showcase their own unique art forms. We want to foster creativity and collaboration among them. &nbsp;Creating spaces for community &lt;3
+          </p>
+          <div class="text-names md:pr-[14vw]">
+            <p class="mb-[2.6vw]">by</p>
+            <ul>
+              <li>Tara Monheim</li>
+              <li>Kaethe Kraus</li>
+              <li>Fabia Poyke</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-item">
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="panel-artists" data-text="artists">artists</button>
+      <div id="panel-artists" class="menu-panel" hidden>
+        <!-- Einfach weitere <li> ergänzen – die Nummern zählen automatisch -->
+        <ol class="artist-list flex flex-wrap gap-x-[0.9em] font-serif text-list leading-[1.35] md:pr-[12vw] md:py-[0.4vw]">
+          <li>Alina Cherubin</li>
+          <li>CrochetCvnts</li>
+          <li>Edith_Wons.pdf</li>
+          <li>Eliza Lorenz</li>
+          <li>Feline Sasse</li>
+          <li>Hella Henke</li>
+          <li>Johanna Besseling</li>
+          <li>Johannastollekunst</li>
+          <li>Judith Bondy</li>
+          <li>Julia Broseman</li>
+          <li>Julie Goslinga</li>
+          <li>Lola Bott</li>
+          <li>Lucie Meyer</li>
+          <li>Mausi.Bling</li>
+          <li>Maxima Vischer</li>
+          <li>Odassey</li>
+          <li>Plusmabeats</li>
+          <li>sugarsugar.bags</li>
+          <li>Tara Lucie Lee</li>
+          <li>Tim Reimann</li>
+          <li>Tulpensteeni_Ceramics</li>
+          <li>Xara Habel</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="menu-item">
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="panel-contact" data-text="contact">contact</button>
+      <div id="panel-contact" class="menu-panel" hidden>
+        <p class="font-serif text-list md:pl-[1.4vw] md:pt-[0.6vw]">
+          write us here &gt;&gt;&gt;&gt;
+          <a href="mailto:hello@montagkollektiv.com" class="hover:underline">hello@montagkollektiv.com</a>
+          <span class="mx-[0.6em]">•</span>
+          <a href="https://www.instagram.com/montag.kollektiv/" target="_blank" rel="noopener" class="hover:underline">@montag.kollektiv</a>
+        </p>
+      </div>
+    </section>
+
+    <!--
+      collab: rosa Band bis zum unteren Rand. Rechts drei Karten = eure Angebote.
+      Hover dreht die Karte (Rückseite: kurzer Text), Klick öffnet eine E-Mail mit passendem Betreff.
+      Bilder für die Vorderseiten kommen aus images/home/: 13 (Exhibitions), 20 (Events), 6 (Marketing)
+    -->
+    <section class="menu-item" data-fill>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="panel-collab" data-text="collab">collab</button>
+      <div id="panel-collab" class="menu-panel" hidden>
+        <div class="grid gap-8 md:grid-cols-[1fr_auto] md:gap-[4vw] md:pt-[0.6vw]">
+          <p class="font-serif text-panel md:max-w-[34vw]">
+            We are open for collaborations. We help small brands and initiatives with exhibitions, events and marketing.
+          </p>
+          <div class="flex gap-[1.4vw] max-md:gap-3 md:pt-[2.6vw]">
+            <a class="collab-card" href="mailto:hello@montagkollektiv.com?subject=Collab%3A%20Exhibitions">
+              <span class="collab-card-inner">
+                <span class="collab-front"><img src="images/home/13.jpg" alt="" /><span class="collab-label">Exhibitions</span></span>
+                <span class="collab-back">
+                  <strong>Exhibitions</strong>
+                  <span>From Open Call to Opening Night – we plan, curate and build the right space.</span>
+                  <em>write us →</em>
+                </span>
+              </span>
+            </a>
+            <a class="collab-card" href="mailto:hello@montagkollektiv.com?subject=Collab%3A%20Events">
+              <span class="collab-card-inner">
+                <span class="collab-front"><img src="images/home/20.jpg" alt="" /><span class="collab-label">Events</span></span>
+                <span class="collab-back">
+                  <strong>Events</strong>
+                  <span>Exhibitions, Workshops or Pop Ups – together we make it a space for community.</span>
+                  <em>write us →</em>
+                </span>
+              </span>
+            </a>
+            <a class="collab-card" href="mailto:hello@montagkollektiv.com?subject=Collab%3A%20Marketing">
+              <span class="collab-card-inner">
+                <span class="collab-front"><img src="images/home/6.jpg" alt="" /><span class="collab-label">Marketing</span></span>
+                <span class="collab-back">
+                  <strong>Marketing</strong>
+                  <span>We design posters and social media campaigns or shoot videos that capture your small brand in your own way.</span>
+                  <em>write us →</em>
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <nav class="fixed right-[1.2vw] bottom-[0.8vw] z-40 flex gap-[1.2vw] text-names text-muted max-md:right-4 max-md:bottom-3 max-md:gap-3" aria-label="Rechtliches"><a href="datenschutz.html" class="hover:text-brand">datenschutz</a><a href="impressum.html" class="hover:text-brand">impressum</a></nav>
+
+  <script src="js/placeholders.js"></script>
+  <script src="js/rotator.js"></script>
+  <script src="js/spin.js"></script>
+  <!-- Kasten mit Projektnamen, folgt der Maus -->
+  <div id="hover-label" class="hover-label" aria-hidden="true"></div>
+
+  <script src="js/menu.js"></script>
+  <script src="js/hover-label.js"></script>
+  <script src="js/vendor/matter.min.js"></script>
+  <script src="js/falling.js"></script>
+  <script src="js/brush.js"></script>
+  <script src="js/draw.js"></script>
 </body>
 </html>

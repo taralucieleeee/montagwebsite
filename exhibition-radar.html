@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibition Radar – Montag Kollektiv</title>
+  <meta name="description" content="Exhibition Radar – an exhibition by Montag Kollektiv." />
+  <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<!--
+  PROJEKTSEITE (Vorlage)
+  Für ein neues Projekt: Datei kopieren, umbenennen (z. B. exhibition-radar.html),
+  Titel, Bilder und Infos austauschen und auf der Homepage beim Bild verlinken.
+-->
+<body class="flex min-h-dvh flex-col bg-white text-brand font-sans antialiased">
+
+  <!-- ───────── Kopfzeile (wie Homepage) ───────── -->
+  <header id="site-header" class="sticky top-0 z-30 grid shrink-0 grid-cols-1 md:grid-cols-[auto_1fr] border border-brand max-md:border-x-0 max-md:border-t-0 bg-white text-display">
+    <p class="px-[1.2vw] py-[1.1vw] max-md:px-4 max-md:py-3 md:border-r border-brand">
+      <a href="index.html"><strong class="font-bold">Montag Kollektiv</strong> <span class="rotator" data-rotate="is a creative collective from Hamburg|creates spaces for community|connects emerging artists|organizes events &amp; exhibitions|is open for collaborations">is a creative collective from Hamburg</span></a>
+    </p>
+    <nav class="px-[1.2vw] py-[1.1vw] max-md:hidden border-brand text-right">
+      <a href="shop.html" class="bold-stable hover:font-bold" data-text="shop">shop</a>
+    </nav>
+  </header>
+
+  <div class="grid flex-1 grid-cols-1 md:items-start md:grid-cols-[15vw_9.85vw_48.1vw_1fr]">
+
+    <!-- ───────── Spalte 1: rosa Streifen mit senkrechtem Titel ───────── -->
+    <aside class="pinned mobile-title flex items-center justify-center overflow-hidden bg-blush md:py-[4vw] max-md:px-4 max-md:py-6 max-md:justify-start">
+      <h1 class="project-title">Exhibition Radar</h1>
+    </aside>
+
+    <!-- ───────── Spalte 2: back ───────── -->
+    <nav class="pinned mobile-back text-display md:pl-[1.9vw] md:pt-[1.6vw] max-md:px-4 max-md:py-4">
+      <a href="index.html" class="bold-stable w-fit hover:font-bold" data-text="back">back</a>
+    </nav>
+
+    <!-- ───────── Spalte 3: Bilder (scrollt) – Bilder in images/exhibition-radar/ ───────── -->
+    <main class="max-md:px-4">
+      <!-- Bilder kommen aus images/home/ (gleiche Nummern wie auf der Startseite) -->
+      <div class="flex flex-col items-center gap-[4.6vw] py-[1.95vw] max-md:gap-8">
+        <img src="images/home/1.jpg" alt="Plakat Radar im Kugu Space, 19.07.24" class="w-[80%]" loading="lazy" />
+        <img src="images/home/2.jpg" alt="Exhibition Radar im KuGu-Space, Ottensen" class="w-full" loading="lazy" />
+        <img src="images/home/3.png" alt="Radar Sticker, 19.07.24" class="w-[43%] will-change-transform" data-spin="0.25" loading="lazy" />
+        <video src="images/home/29.mp4" poster="images/home/29-poster.jpg" aria-label="Video: Radar, 19.07.24 im Kugu Space" class="w-[60%]" autoplay muted loop playsinline preload="metadata"></video>
+        <img src="images/home/20.jpg" alt="Gäste vor dem Kugu Space" class="w-full" loading="lazy" />
+        <img src="images/home/21.jpg" alt="Gäste auf der Rampe" class="w-[86%]" loading="lazy" />
+        <img src="images/home/13.jpg" alt="Besucherin vor einer Fotowand" class="w-full" loading="lazy" />
+        <img src="images/home/14.jpg" alt="Wandskulptur mit Tentakeln" class="w-[70%]" loading="lazy" />
+        <img src="images/home/28.jpg" alt="Hände mit rosa Skulptur" class="w-[70%]" loading="lazy" />
+        <img src="images/home/18.jpg" alt="Videoinstallation hinter einem Vorhang" class="w-full" loading="lazy" />
+        <img src="images/home/27.png" alt="Person hält ein Radar-Plakat vor das Gesicht" class="w-[86%]" loading="lazy" />
+        <img src="images/home/10.jpg" alt="Künstler am Pult in violettem Licht" class="w-full" loading="lazy" />
+        <img src="images/home/12.jpg" alt="Sängerin mit Mikrofon" class="w-[86%]" loading="lazy" />
+        <img src="images/home/23.jpg" alt="DJ an einem Pult mit Neonlicht" class="w-[70%]" loading="lazy" />
+        <img src="images/home/19.jpg" alt="Publikum in der Ausstellung" class="w-full" loading="lazy" />
+      </div>
+    </main>
+
+    <!-- ───────── Spalte 4: Infos ───────── -->
+    <section class="pinned font-serif text-info md:pl-[2.6vw] md:pr-[1.2vw] md:pt-[1.9vw] md:pb-[5vw] max-md:px-4 max-md:py-8">
+
+      <div class="info-block">
+        <h2 class="info-heading">Our Artists</h2>
+        <ol class="numbered-list">
+          <li>Alina Cherubin</li>
+          <li>Eliza Lorenz</li>
+          <li>Hella Henke</li>
+          <li>Johanna Besseling</li>
+          <li>Judith Bondy</li>
+          <li>Julia Broseman</li>
+          <li>Julie Goslinga</li>
+          <li>Lola Bott</li>
+          <li>Lucie Meyer</li>
+          <li>Maxima Vischer</li>
+          <li>Plusmabeats</li>
+          <li>Tara Lucie Lee</li>
+          <li>Tim Reimann</li>
+          <li>Xara Habel</li>
+        </ol>
+      </div>
+
+      <div class="info-block">
+        <h2 class="info-heading">Music</h2>
+        <ol class="numbered-list">
+          <li>Beam Control</li>
+          <li>Fyori</li>
+          <li>Hella Henke</li>
+        </ol>
+      </div>
+
+      <div class="info-block">
+        <h2 class="info-heading">Facts</h2>
+        <p>The first edition of Radar was launched on the 19.07.2023 in the KuGu-Space in Ottensen:</p>
+        <ul class="mt-[2.1vw]">
+          <li class="fact" style="--i:0">280 visitors</li>
+          <li class="fact" style="--i:1">14 interdisciplinary artists</li>
+          <li class="fact" style="--i:2">Live Act &amp; DJs</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h2 class="info-heading">What</h2>
+        <div class="tag-table">
+          <div><span>Sounddesign</span><span>Textiledesign</span><span>3D Art</span></div>
+          <div><span>Animation</span><span>Illustration</span><span>Acryl</span></div>
+          <div><span>Installations</span></div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h2 class="info-heading">Without you it would not have happened</h2>
+        <p>Eventtechnik Nord, Marisol, Maximilian,<br />Moritz, Nele, Linus, Jannis &amp; Marius</p>
+      </div>
+
+    </section>
+  </div>
+
+  <nav class="fixed right-[1.2vw] bottom-[0.8vw] z-40 flex gap-[1.2vw] text-names text-muted max-md:right-4 max-md:bottom-3 max-md:gap-3" aria-label="Rechtliches"><a href="datenschutz.html" class="hover:text-brand">datenschutz</a><a href="impressum.html" class="hover:text-brand">impressum</a></nav>
+
+  <script src="js/placeholders.js"></script>
+  <script src="js/rotator.js"></script>
+  <script src="js/project-layout.js"></script>
+  <script src="js/spin.js"></script>
+</body>
+</html>

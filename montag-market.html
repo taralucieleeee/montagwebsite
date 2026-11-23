@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Montag Market – Montag Kollektiv</title>
+  <meta name="description" content="Montag Market – a pop-up market by Montag Kollektiv." />
+  <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<!--
+  PROJEKTSEITE (Vorlage)
+  Für ein neues Projekt: Datei kopieren, umbenennen (z. B. exhibition-radar.html),
+  Titel, Bilder und Infos austauschen und auf der Homepage beim Bild verlinken.
+-->
+<body class="flex min-h-dvh flex-col bg-white text-brand font-sans antialiased">
+
+  <!-- ───────── Kopfzeile (wie Homepage) ───────── -->
+  <header id="site-header" class="sticky top-0 z-30 grid shrink-0 grid-cols-1 md:grid-cols-[auto_1fr] border border-brand max-md:border-x-0 max-md:border-t-0 bg-white text-display">
+    <p class="px-[1.2vw] py-[1.1vw] max-md:px-4 max-md:py-3 md:border-r border-brand">
+      <a href="index.html"><strong class="font-bold">Montag Kollektiv</strong> <span class="rotator" data-rotate="is a creative collective from Hamburg|creates spaces for community|connects emerging artists|organizes events &amp; exhibitions|is open for collaborations">is a creative collective from Hamburg</span></a>
+    </p>
+    <nav class="px-[1.2vw] py-[1.1vw] max-md:hidden border-brand text-right">
+      <a href="shop.html" class="bold-stable hover:font-bold" data-text="shop">shop</a>
+    </nav>
+  </header>
+
+  <div class="grid flex-1 grid-cols-1 md:items-start md:grid-cols-[15vw_17.5vw_35.5vw_1fr]">
+
+    <!-- ───────── Spalte 1: rosa Streifen mit senkrechtem Titel ───────── -->
+    <aside class="pinned mobile-title flex items-center justify-center overflow-hidden bg-blush md:py-[4vw] max-md:px-4 max-md:py-6 max-md:justify-start">
+      <h1 class="project-title">Montag Market</h1>
+    </aside>
+
+    <!-- ───────── Spalte 2: back + Editionen ───────── -->
+    <nav class="pinned mobile-back flex flex-col justify-between text-display md:pb-[2.1vw] md:pl-[1.9vw] md:pt-[1.6vw] max-md:flex-row max-md:items-center max-md:px-4 max-md:py-4">
+      <a href="index.html" class="bold-stable w-fit hover:font-bold" data-text="back">back</a>
+      <div class="flex flex-col items-start max-md:flex-row max-md:gap-2">
+        <!-- Für weitere Editionen: Button kopieren, data-edition hochzählen -->
+        <button type="button" class="edition-tab" data-edition="1" data-text="Edition 1">Edition 1</button>
+        <button type="button" class="edition-tab" data-edition="2" data-text="Edition 2">Edition 2</button>
+      </div>
+    </nav>
+
+    <!-- ───────── Spalte 3: Bilder (scrollt) ───────── -->
+    <main class="max-md:px-4">
+
+      <!-- Edition 1 (20.12.24, Kölibri) – Bilder kommen aus images/home/ (gleiche Nummern wie auf der Startseite) -->
+      <div class="edition flex flex-col items-center gap-[6.8vw] py-[1.6vw] max-md:gap-8" data-edition="1">
+        <img src="images/home/4.jpg" alt="Plakat Pop-up Market, 20.12.24 im Kölibri" class="w-[98%]" loading="lazy" />
+        <img src="images/home/5.png" alt="Open Call Kreativmarkt" class="w-[80%]" loading="lazy" />
+        <img src="images/home/8.jpg" alt="Besucher*innen am Market-Stand" class="w-full" loading="lazy" />
+        <img src="images/home/15.png" alt="Plakat GEMZ, 20.12.24" class="w-[86%]" loading="lazy" />
+        <img src="images/home/11.jpg" alt="Toothgem-Behandlung" class="w-[70%]" loading="lazy" />
+        <img src="images/home/17.jpg" alt="Ohrringe auf Moos" class="w-[80%]" loading="lazy" />
+        <img src="images/home/22.jpg" alt="Gehäkeltes Top" class="w-[70%]" loading="lazy" />
+        <img src="images/home/7.png" alt="Transparente Schaufensterpuppe" class="w-[60%]" loading="lazy" />
+      </div>
+
+      <!-- Edition 2 (21. Dezember) -->
+      <div class="edition flex flex-col items-center gap-[6.8vw] py-[1.6vw] max-md:gap-8" data-edition="2" hidden>
+        <img src="images/home/6.jpg" alt="Open Call Montag Market, Deadline 22.11." class="w-[90%]" loading="lazy" />
+        <video src="images/home/9.mp4" poster="images/home/9-poster.jpg" aria-label="Video: Montag Market" class="w-[80%]" autoplay muted loop playsinline preload="metadata"></video>
+        <img src="images/home/16.png" alt="Person mit Silberstern vor dem Gesicht" class="w-[60%] will-change-transform" data-spin="0.15" loading="lazy" />
+        <img src="images/home/24.jpg" alt="Bedrucktes Shirt und Leggings" class="w-[60%]" loading="lazy" />
+        <img src="images/home/25.jpg" alt="Montag Market, 21. Dezember" class="w-[86%]" loading="lazy" />
+        <video src="images/home/26.mp4" poster="images/home/26-poster.jpg" aria-label="Video: Montag Market Schriftzug" class="w-[70%]" autoplay muted loop playsinline preload="metadata"></video>
+      </div>
+
+    </main>
+
+    <!-- ───────── Spalte 4: Infos ───────── -->
+    <section class="pinned font-serif text-info md:pl-[7.5vw] md:pr-[1.2vw] md:pt-[1.9vw] md:pb-[5vw] max-md:px-4 max-md:py-8">
+
+      <!-- Edition 1 -->
+      <div class="edition" data-edition="1">
+        <div class="info-block">
+          <h2 class="info-heading">Our Artists</h2>
+          <!-- Einfach weitere <li> ergänzen – die Nummern rechts zählen automatisch -->
+          <ol class="numbered-list">
+            <li>Odassey</li>
+            <li>Feline Sasse</li>
+            <li>Mausi.Bling</li>
+            <li>Edith_Wons.pdf</li>
+            <li>Tara Lucie Lee</li>
+            <li>CrochetCvnts</li>
+            <li>Tulpensteeni_Ceramics</li>
+            <li>Xaramitx</li>
+            <li>Johannastollekunst</li>
+            <li>sugarsugar.bags</li>
+            <li>Alina_Cherub</li>
+            <li>LLucccey</li>
+          </ol>
+        </div>
+
+        <div class="info-block">
+          <h2 class="info-heading">About</h2>
+          <p>The first edition of our Montag Market launched in the Kölibri St.Pauli on the 20.12.2024:</p>
+          <!-- Schwarze Etiketten, treppenartig versetzt (--i = Stufe) -->
+          <ul class="mt-[2.1vw]">
+            <li class="fact" style="--i:0">300 visitors</li>
+            <li class="fact" style="--i:1">12 interdisciplinary artists</li>
+            <li class="fact" style="--i:2">Workshop</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <h2 class="info-heading">What</h2>
+          <!-- Kästchen-Tabelle: jede <div> ist eine Zeile -->
+          <div class="tag-table">
+            <div><span>Ceramics</span><span>Prints</span><span>Tooth Gems</span></div>
+            <div><span>Fashion</span><span>Paintings</span><span>Jewellery</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edition 2 -->
+      <div class="edition" data-edition="2" hidden>
+        <div class="info-block">
+          <h2 class="info-heading">Our Artists</h2>
+          <ol class="numbered-list">
+            <li>Name</li>
+            <li>Name</li>
+            <li>Name</li>
+          </ol>
+        </div>
+        <div class="info-block">
+          <h2 class="info-heading">About</h2>
+          <p>Platzhalter – Text zur zweiten Edition.</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <nav class="fixed right-[1.2vw] bottom-[0.8vw] z-40 flex gap-[1.2vw] text-names text-muted max-md:right-4 max-md:bottom-3 max-md:gap-3" aria-label="Rechtliches"><a href="datenschutz.html" class="hover:text-brand">datenschutz</a><a href="impressum.html" class="hover:text-brand">impressum</a></nav>
+
+  <script src="js/placeholders.js"></script>
+  <script src="js/rotator.js"></script>
+  <script src="js/project-layout.js"></script>
+  <script src="js/project.js"></script>
+  <script src="js/spin.js"></script>
+</body>
+</html>
