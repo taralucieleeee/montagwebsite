@@ -8,8 +8,8 @@
    - Grotesk: Arial Narrow (wie in Figma, Laufweite −8 %). Ist auf jedem Mac und auf Windows mit Office
      installiert und wird von dort genommen. Arial Narrow darf man nicht selbst ins Web hochladen (Lizenz Monotype),
      darum fällt der Browser ohne installierte Arial Narrow auf Archivo zurück – lokal eingebunden, ähnlich schmal.
-   - Serif: Serrif VF (Displaay Type Foundry) – kommerzielle Schrift. Solange keine Web-Lizenz/Webfont-Dateien da sind,
-     wird sie nur auf Rechnern angezeigt, auf denen sie installiert ist (auch die Trial-Version); sonst Times New Roman. */
+   - Serif: LT Superior Serif (LyonsType, SIL Open Font License – darf mit der Website ausgeliefert werden,
+     Lizenztext: fonts/LT-Superior-Serif-OFL.txt). Liegt als woff2 in fonts/. */
 @font-face {
   font-family: "Archivo";
   src: url("../fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations");
@@ -27,6 +27,42 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+@font-face {
+  font-family: "LT Superior Serif Web";
+  src: url("../fonts/lt-superior-serif-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LT Superior Serif Web";
+  src: url("../fonts/lt-superior-serif-medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LT Superior Serif Web";
+  src: url("../fonts/lt-superior-serif-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LT Superior Serif Web";
+  src: url("../fonts/lt-superior-serif-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LT Superior Serif Web";
+  src: url("../fonts/lt-superior-serif-extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Design-Tokens aus dem Figma-Entwurf (gemessen an 2000 px Breite) */
 @theme {
   /* breite Bildschirme (ab 1700 px): 4 Bilder pro Reihe auf der Startseite */
@@ -36,7 +72,7 @@
   --color-muted: #9a9a9a;   /* impressum */
 
   --font-sans: "Arial Narrow", "Archivo", sans-serif;
-  --font-serif: "Serrif VF", "Serrif VF-TRIAL", "Times New Roman", Times, ui-serif, serif;
+  --font-serif: "LT Superior Serif Web", "Times New Roman", Times, ui-serif, serif;
 
   /* Schriftgrößen: wachsen mit der Fensterbreite, mit Unter- und Obergrenze */
   --text-display: clamp(1.6rem, 2.9vw, 4.5rem);   /* Kopfzeile, Menü, Hover-Kasten */
