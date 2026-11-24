@@ -28,6 +28,34 @@
     Bilder in images/home/ ablegen: 1.jpg … 5.jpg (Reihenfolge links oben → rechts unten). Siehe images/LIESMICH.md
   -->
   <div id="content" class="transition-[filter] duration-300">
+
+  <!--
+    ───────── Event-Ankündigung: 3D-Weihnachtskugel ─────────
+    Plakat liegt in images/event/. Kugel dreht sich beim Scrollen (js/ornament.js, Quelle: src/ornament.js).
+    Nach dem Event: die ganze <section id="event"> löschen.
+  -->
+  <section id="event" class="pb-[3vw] max-md:pb-6">
+  <a id="ornament" href="montag-market.html" data-title="Montag Market"
+     data-poster="images/event/montag-market-21-12.jpg"
+     aria-label="Montag Market – see you there? 21.12, 17–22 Uhr, Hein-Köllisch-Platz 12"
+     class="project-event relative block h-[min(82vh,64vw)] overflow-hidden max-md:h-[110vw]">
+    <img src="images/event/montag-market-21-12.jpg" alt="" class="ornament-fallback absolute inset-0 m-auto max-h-[80%] max-w-[80%] object-contain" />
+  </a>
+
+    <!-- Kästchen + Text unter der Kugel -->
+    <div class="flex flex-col items-center px-[2.8vw] font-serif max-md:px-4">
+      <ul class="flex justify-center whitespace-nowrap border border-brand text-list leading-[1.15] max-md:text-[0.9rem]">
+        <li class="px-[0.55em] pt-[0.1em] pb-[0.05em]">Creative Market</li>
+        <li class="border-l border-brand px-[0.55em] pt-[0.1em] pb-[0.05em]">Tattoos &amp; Tooth Gems</li>
+        <li class="border-l border-brand px-[0.55em] pt-[0.1em] pb-[0.05em]">Workshops</li>
+      </ul>
+      <p class="bg-brand px-[0.55em] pt-[0.1em] pb-[0.05em] text-list leading-[1.15] text-white max-md:text-[0.9rem]">10 artists</p>
+      <p class="mt-[2.6vw] max-w-[62vw] text-center text-display leading-[1.02] max-md:mt-6 max-md:max-w-none max-md:text-[1.6rem] max-md:leading-[1.08]">
+        This year we’re introducing the second edition of our pop-up market, with local artists and brands as well as
+        tooth gems, tattoos and workshops. Come see for yourself on 21 December, from 5 to 10 pm at Kölibri.
+      </p>
+    </div>
+  </section>
   <main class="flex flex-wrap items-end overflow-x-clip gap-x-[2.1vw] gap-y-[4.45vw] px-[2.8vw] pt-[7.2vw] pb-[8vw] max-md:flex-col max-md:items-stretch max-md:gap-8 max-md:px-4 max-md:pt-10">
     <!-- Wie das Folch-Archiv: 3 pro Reihe (ab 1700 px Bildschirmbreite 4), unten bündig. Jeder Rahmen übernimmt die Form seines Bildes
          (nichts wird abgeschnitten) – nur die Breite (md:w-[…vw]) ist festgelegt. -->
@@ -314,5 +342,6 @@
   <script src="js/falling.js"></script>
   <script src="js/brush.js"></script>
   <script src="js/draw.js"></script>
+  <script src="js/ornament.js" defer></script>
 </body>
 </html>

@@ -319,3 +319,6 @@
   .artist-list li { counter-increment: artist; }
   .artist-list li::before { content: counter(artist) ". "; letter-spacing: 0; }
 }
+
+/* 3D-Weihnachtskugel: Plakatbild nur zeigen, wenn WebGL nicht geht */
+#ornament.has-3d .ornament-fallback { display: none; }
